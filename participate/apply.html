@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>프로그램 신청 | 사단법인 화성연구회</title>
+<meta name="description" content="화성연구회 답사, 강좌, 모니터링 신청서(예시).">
+<meta property="og:title" content="프로그램 신청 | 사단법인 화성연구회">
+<meta property="og:description" content="화성연구회 답사, 강좌, 모니터링 신청서(예시).">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-page="participate/apply.html">
+<main id="main">
+<div class="page-head"><div class="wrap">
+<p class="breadcrumb"><a href="../index.html">처음</a> &gt; 참여하기 &gt; 프로그램 신청</p>
+<h1>프로그램 신청</h1>
+<p>신청서를 내면 접수번호가 나옵니다. 신청 내역 확인에는 휴대전화 번호와 확인 번호 4자리를 씁니다.</p>
+</div></div>
+<nav class="subnav" data-section="participate"></nav>
+
+<section class="section">
+<div class="wrap grid-2">
+  <div>
+    <p class="notice-demo">예시 화면입니다. 신청서를 내도 사무국으로 전송되지 않고, 입력한 내용은 지금 쓰는 브라우저에만 저장됩니다.</p>
+    <form class="form" id="apply-form" novalidate>
+      <div class="field">
+        <label for="f-event">신청할 프로그램<span class="req">필수</span></label>
+        <select id="f-event" name="event"></select>
+        <p class="err" role="alert"></p>
+      </div>
+      <div class="prog-summary" id="prog-summary" hidden></div>
+      <div class="field">
+        <label for="f-name">이름<span class="req">필수</span></label>
+        <input type="text" id="f-name" name="name" autocomplete="name">
+        <p class="err" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="f-phone">휴대전화<span class="req">필수</span></label>
+        <input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="numeric" placeholder="01012345678">
+        <p class="hint">접수 안내 문자를 받을 번호입니다.</p>
+        <p class="err" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="f-email">이메일</label>
+        <input type="email" id="f-email" name="email" autocomplete="email">
+        <p class="err" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="f-people">참가 인원<span class="req">필수</span></label>
+        <input type="number" id="f-people" name="people" min="1" max="5" value="1">
+        <p class="hint">한 번에 5명까지 신청할 수 있습니다.</p>
+        <p class="err" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="f-pin">확인 번호 4자리<span class="req">필수</span></label>
+        <input type="password" id="f-pin" name="pin" inputmode="numeric" maxlength="4" autocomplete="off">
+        <p class="hint">신청 내역을 보거나 취소할 때 씁니다.</p>
+        <p class="err" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="f-memo">남길 말</label>
+        <textarea id="f-memo" name="memo" placeholder="예: 휠체어를 이용합니다"></textarea>
+      </div>
+      <div class="field">
+        <div class="consent-box">수집 항목: 이름, 휴대전화, 이메일, 참가 인원<br>이용 목적: 프로그램 접수와 안내 연락<br>보관 기간: 프로그램 종료 후 6개월<br>동의하지 않으면 신청할 수 없습니다.</div>
+        <label class="check" for="f-consent"><input type="checkbox" id="f-consent"> 개인정보 수집·이용에 동의합니다</label>
+        <p class="err" role="alert"></p>
+      </div>
+      <button class="btn" type="submit">신청서 내기</button>
+    </form>
+    <div id="apply-result" hidden aria-live="polite"></div>
+  </div>
+  <div>
+    <div class="block">
+      <h3>신청 전에 확인하세요</h3>
+      <ul>
+        <li>답사는 걷는 거리가 2~6km입니다. 편한 신발을 신고 오세요.</li>
+        <li>정원이 차면 신청 버튼이 ‘정원 마감’으로 바뀝니다.</li>
+        <li>신청을 취소하려면 신청 내역 확인 화면에서 취소하세요.</li>
+        <li>비가 많이 오면 답사 일정이 바뀔 수 있습니다.</li>
+      </ul>
+      <a href="check.html">신청 내역 확인</a>
+    </div>
+    <div class="block" style="margin-top:16px">
+      <h3>실제 운영으로 바꿀 때</h3>
+      <p class="small">신청 자료를 저장할 곳이 필요합니다. Google 설문지, 네이버 폼 같은 외부 신청서로 연결하거나, Firebase, Supabase 같은 서비스로 접수 저장소를 만들 수 있습니다. 바꿀 곳은 <code>assets/js/participate.js</code>의 저장·조회 함수 두 개입니다.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+</main>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/participate.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>회원·후원·자원봉사 | 사단법인 화성연구회</title>
+<meta name="description" content="화성연구회 회원 가입 안내와 신청서(예시), 후원 안내, 모니터링 자원봉사.">
+<meta property="og:title" content="회원·후원·자원봉사 | 사단법인 화성연구회">
+<meta property="og:description" content="화성연구회 회원 가입 안내와 신청서(예시), 후원 안내, 모니터링 자원봉사.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-page="participate/member.html">
+<main id="main">
+<div class="page-head"><div class="wrap">
+<p class="breadcrumb"><a href="../index.html">처음</a> &gt; 참여하기 &gt; 회원·후원·자원봉사</p>
+<h1>회원·후원·자원봉사</h1>
+<p>수원화성에 관심 있는 분이라면 수원 시민이 아니어도 회원이 될 수 있습니다.</p>
+</div></div>
+<nav class="subnav" data-section="participate"></nav>
+
+<section class="section">
+<div class="wrap grid-2">
+  <div>
+    <h2>회원 가입 안내</h2>
+    <dl class="facts">
+      <dt>자격</dt><dd>수원화성에 관심 있는 누구나. 전문 지식이 없어도 됩니다.</dd>
+      <dt>회원 활동</dt><dd>정기 답사, 인문학 강좌, 월례 모니터링, 성신사 고유제와 명패봉안문화제 참여</dd>
+      <dt>회비</dt><dd>[연회비 금액 입력]</dd>
+      <dt>가입 절차</dt><dd>가입 신청서 제출, 사무국 확인 연락, 회비 납부 후 회원 등록</dd>
+    </dl>
+  </div>
+  <div>
+    <p class="notice-demo">예시 화면입니다. 신청서를 내도 전송되지 않습니다.</p>
+    <form class="form" id="member-form" novalidate>
+      <div class="field"><label for="m-name">이름<span class="req">필수</span></label><input type="text" id="m-name" autocomplete="name"></div>
+      <div class="field"><label for="m-phone">휴대전화<span class="req">필수</span></label><input type="tel" id="m-phone" inputmode="numeric" placeholder="01012345678"></div>
+      <div class="field"><label for="m-area">사는 곳</label><input type="text" id="m-area" placeholder="예: 수원시 팔달구"></div>
+      <div class="field">
+        <fieldset><legend>관심 있는 활동</legend>
+          <label class="check"><input type="checkbox"> 답사</label>
+          <label class="check"><input type="checkbox"> 강좌</label>
+          <label class="check"><input type="checkbox"> 모니터링</label>
+          <label class="check"><input type="checkbox"> 행사 진행 돕기</label>
+        </fieldset>
+      </div>
+      <div class="field">
+        <div class="consent-box">수집 항목: 이름, 휴대전화, 사는 곳<br>이용 목적: 회원 가입 확인과 연락<br>보관 기간: 회원 탈퇴 시까지</div>
+        <label class="check" for="m-consent"><input type="checkbox" id="m-consent"> 개인정보 수집·이용에 동의합니다</label>
+      </div>
+      <button class="btn" type="submit">가입 신청서 내기</button>
+    </form>
+    <div id="member-result" aria-live="polite"></div>
+  </div>
+</div>
+</section>
+
+<section class="section section-alt" id="volunteer">
+<div class="wrap grid-2">
+  <div>
+    <h2>모니터링 자원봉사</h2>
+    <p>화성연구회는 매달 수원화성을 돌며 성벽과 시설물, 안내판 상태를 살핍니다. 점검한 내용은 기록해 관리 기관에 알립니다.</p>
+    <ul>
+      <li>일정: 매달 정해진 토요일 오전 [일정 확인]</li>
+      <li>대상: 회원</li>
+      <li>준비물: 편한 신발, 휴대전화(사진 촬영용)</li>
+    </ul>
+    <a class="btn" href="index.html">모니터링 일정 보기</a>
+  </div>
+  <div id="support">
+    <h2>후원 안내</h2>
+    <p>후원금은 성신사 고유제, 명패봉안문화제, 답사와 강좌 운영에 씁니다.</p>
+    <dl class="facts">
+      <dt>후원 계좌</dt><dd>[은행명, 계좌번호, 예금주 입력]</dd>
+      <dt>기부금 영수증</dt><dd>[발급 가능 여부와 방법 입력]</dd>
+    </dl>
+  </div>
+</div>
+</section>
+
+</main>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/participate.js"></script>
+</body>
+</html>

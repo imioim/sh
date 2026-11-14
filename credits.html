@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이미지 출처와 라이선스 | 사단법인 화성연구회</title>
+<meta name="description" content="홈페이지에 쓴 사진과 도판의 저작자와 라이선스.">
+<meta property="og:title" content="이미지 출처와 라이선스 | 사단법인 화성연구회">
+<meta property="og:description" content="홈페이지에 쓴 사진과 도판의 저작자와 라이선스.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-root="" data-page="credits.html">
+<main id="main">
+<div class="page-head"><div class="wrap">
+<p class="breadcrumb"><a href="index.html">처음</a> &gt; 이미지 출처와 라이선스</p>
+<h1>이미지 출처와 라이선스</h1>
+<p>이 사이트의 사진은 위키미디어 공용에 올라온 자유 이용 사진과 퍼블릭 도메인 도판입니다.</p>
+</div></div>
+
+<section class="section">
+<div class="wrap">
+  <ul class="credit-list" id="credits"></ul>
+  <div class="note">
+    <p>CC BY, CC BY-SA 사진은 저작자와 라이선스를 밝히면 쓸 수 있습니다. CC BY-SA 사진을 고쳐서 쓰면 고친 사진도 같은 라이선스로 공개해야 합니다.</p>
+    <p>사진은 위키미디어 서버에서 불러옵니다. 저장소에 직접 넣어 쓰려면 사진을 <code>assets/img</code> 폴더에 저장하고 <code>assets/js/data.js</code>의 해당 사진에 <code>local: "assets/img/파일명"</code>을 적으세요.</p>
+  </div>
+</div>
+</section>
+
+</main>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+
+document.getElementById("credits").innerHTML = Object.keys(HS.images).map(function (k) {
+  var im = HS.images[k];
+  return '<li><div class="photo"><img loading="lazy" alt="" src="' + HS.imgUrl(k, 320) + '"></div><div><strong>' + im.title + '</strong><br>' +
+    '저작자: ' + im.author + '<br>라이선스: <a href="' + im.licenseUrl + '" target="_blank" rel="noopener">' + im.license + '</a><br>' +
+    '원본: <a href="' + HS.imgPage(k) + '" target="_blank" rel="noopener">위키미디어 공용 파일 페이지</a></div></li>';
+}).join("");
+
+</script>
+</body>
+</html>

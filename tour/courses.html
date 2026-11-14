@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>답사 코스 추천 | 사단법인 화성연구회</title>
+<meta name="description" content="출발지와 걸을 시간을 고르면 수원화성 답사 코스를 추천합니다.">
+<meta property="og:title" content="답사 코스 추천 | 사단법인 화성연구회">
+<meta property="og:description" content="출발지와 걸을 시간을 고르면 수원화성 답사 코스를 추천합니다.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-page="tour/courses.html">
+<main id="main">
+<div class="page-head"><div class="wrap">
+<p class="breadcrumb"><a href="../index.html">처음</a> &gt; 관광 안내 &gt; 답사 코스 추천</p>
+<h1>답사 코스 추천</h1>
+<p>출발할 곳과 걸을 시간을 고르세요.</p>
+</div></div>
+<nav class="subnav" data-section="tour"></nav>
+
+<section class="section">
+<div class="wrap">
+  <form class="course-pick" id="course-form" onsubmit="return false">
+    <fieldset><legend>출발지</legend>
+      <label class="check"><input type="radio" name="start" value="팔달문" checked> 팔달문</label>
+      <label class="check"><input type="radio" name="start" value="장안문"> 장안문</label>
+      <label class="check"><input type="radio" name="start" value="창룡문"> 창룡문</label>
+      <label class="check"><input type="radio" name="start" value="화성행궁"> 화성행궁</label>
+    </fieldset>
+    <fieldset><legend>걸을 시간</legend>
+      <label class="check"><input type="radio" name="hours" value="1" checked> 1시간</label>
+      <label class="check"><input type="radio" name="hours" value="3"> 3시간(한 바퀴)</label>
+    </fieldset>
+  </form>
+  <div class="map-layout">
+    <div class="fortress" id="course-map"></div>
+    <div id="course-out" aria-live="polite"></div>
+  </div>
+</div>
+</section>
+
+</main>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/fortress.js"></script>
+<script>
+
+(function () {
+  var map = HS.Fortress(document.getElementById("course-map"), { mode: "full", onSelect: function (f) { location.href = "../hwaseong/map.html?n=" + f.n; } });
+  var out = document.getElementById("course-out");
+  var form = document.getElementById("course-form");
+  function pick() {
+    var s = form.querySelector('[name=start]:checked').value, h = +form.querySelector('[name=hours]:checked').value;
+    var c = HS.courses.filter(function (x) { return x.start === s && x.hours === h; })[0] ||
+            HS.courses.filter(function (x) { return x.start === s; })[0];
+    var on = {};
+    c.stops.forEach(function (st) {
+      HS.facilities.forEach(function (f) { if (f.name.indexOf(st.replace(/\(.*\)/, "")) === 0) on[f.n] = 1; });
+    });
+    var any = Object.keys(on).length > 0;
+    document.querySelectorAll("#course-map .pt").forEach(function (g, i) { g.classList.toggle("is-dim", any && !on[HS.facilities[i].n]); });
+    var fallback = c.start !== s || c.hours !== h;
+    out.innerHTML = '<h2>' + c.title + '</h2>' +
+      (fallback ? '<p class="note">고른 조건에 맞는 코스가 없어 같은 출발지의 다른 코스를 보여 줍니다.</p>' : '') +
+      '<ol class="course-stops">' + c.stops.map(function (x) { return '<li>' + x + '</li>'; }).join("") + '</ol>' +
+      '<p class="small">' + c.note + '</p>' +
+      '<p><a href="../participate/index.html">화성연구회와 함께 걷는 답사 일정 보기</a></p>';
+  }
+  form.addEventListener("change", pick);
+  pick();
+})();
+
+</script>
+</body>
+</html>

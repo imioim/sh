@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>행사 기록 | 사단법인 화성연구회</title>
+<meta name="description" content="화성연구회 연도별 행사와 활동 기록.">
+<meta property="og:title" content="행사 기록 | 사단법인 화성연구회">
+<meta property="og:description" content="화성연구회 연도별 행사와 활동 기록.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-page="programs/archive.html">
+<main id="main">
+<div class="page-head"><div class="wrap">
+<p class="breadcrumb"><a href="../index.html">처음</a> &gt; 사업과 행사 &gt; 행사 기록</p>
+<h1>행사 기록</h1>
+<p>공개 자료로 확인한 화성연구회의 연도별 활동입니다.</p>
+</div></div>
+<nav class="subnav" data-section="programs"></nav>
+
+<section class="section">
+<div class="wrap">
+  <div class="timeline-filter" role="group" aria-label="분류 고르기">
+    <button type="button" class="chip" aria-pressed="true" data-k="전체">전체</button>
+    <button type="button" class="chip" aria-pressed="false" data-k="대표 행사">대표 행사</button>
+    <button type="button" class="chip" aria-pressed="false" data-k="연구·조사">연구·조사</button>
+    <button type="button" class="chip" aria-pressed="false" data-k="보존">보존</button>
+    <button type="button" class="chip" aria-pressed="false" data-k="연대">연대</button>
+    <button type="button" class="chip" aria-pressed="false" data-k="법인">법인</button>
+  </div>
+  <div class="table-wrap"><table id="archive">
+    <thead><tr><th scope="col">연도</th><th scope="col">행사·활동</th><th scope="col">분류</th></tr></thead>
+    <tbody>
+      <tr data-k="대표 행사"><td>2002. 1. 12.</td><td>성신사 고유제 재개</td><td>대표 행사</td></tr>
+      <tr data-k="연구·조사"><td>2002</td><td>화성 미복원 시설 지표 조사</td><td>연구·조사</td></tr>
+      <tr data-k="보존"><td>2005</td><td>성신사중건추진위원회 발족 결정</td><td>보존</td></tr>
+      <tr data-k="법인"><td>2007</td><td>최우수 문화재 지킴이 단체상(대통령상) 수상</td><td>법인</td></tr>
+      <tr data-k="법인"><td>2009. 3. 14.</td><td>3기 출범식(수원시청 대강당)</td><td>법인</td></tr>
+      <tr data-k="연대"><td>2009. 6. 26.~27.</td><td>한 문화재 한 지킴이 전국대회 주관</td><td>연대</td></tr>
+      <tr data-k="보존"><td>2009</td><td>수원화성 복원을 위한 시민운동본부 출범 참여</td><td>보존</td></tr>
+      <tr data-k="보존"><td>2009</td><td>성신사 복원</td><td>보존</td></tr>
+      <tr data-k="연구·조사"><td>2016. 1. 20.</td><td>수원화성 방문의 해 기념 학술대회 참석</td><td>연구·조사</td></tr>
+      <tr data-k="연대"><td>2024. 3. 8.</td><td>한국문화재지킴이단체연합회 회장 이·취임식 공동주최</td><td>연대</td></tr>
+      <tr data-k="대표 행사"><td>2024</td><td>제1회 축성장인 명패봉안문화제</td><td>대표 행사</td></tr>
+      <tr data-k="대표 행사"><td>2026. 10. 17.</td><td>성신사고유제·낙성연·축성장인명패봉안문화제</td><td>대표 행사</td></tr>
+      <tr data-k="대표 행사"><td>해마다</td><td>성신사 고유제</td><td>대표 행사</td></tr>
+      <tr data-k="보존"><td>매달</td><td>수원화성 모니터링</td><td>보존</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">행사 사진은 연구회가 직접 찍은 사진을 쓰세요. 언론 보도 사진은 저작권이 있어 허락 없이 올릴 수 없습니다.</p>
+</div>
+</section>
+
+</main>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+<script>
+
+document.querySelectorAll("[data-k].chip").forEach(function (b) {
+  b.addEventListener("click", function () {
+    document.querySelectorAll(".chip").forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+    b.setAttribute("aria-pressed", "true");
+    var k = b.getAttribute("data-k");
+    document.querySelectorAll("#archive tbody tr").forEach(function (tr) { tr.hidden = !(k === "전체" || tr.getAttribute("data-k") === k); });
+  });
+});
+
+</script>
+</body>
+</html>

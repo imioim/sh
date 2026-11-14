@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>신청 내역 확인 | 사단법인 화성연구회</title>
+<meta name="description" content="프로그램 신청 내역 확인과 취소(예시).">
+<meta property="og:title" content="신청 내역 확인 | 사단법인 화성연구회">
+<meta property="og:description" content="프로그램 신청 내역 확인과 취소(예시).">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-page="participate/check.html">
+<main id="main">
+<div class="page-head"><div class="wrap">
+<p class="breadcrumb"><a href="../index.html">처음</a> &gt; 참여하기 &gt; 신청 내역 확인</p>
+<h1>신청 내역 확인</h1>
+<p>신청할 때 적은 휴대전화 번호와 확인 번호 4자리를 넣으세요.</p>
+</div></div>
+<nav class="subnav" data-section="participate"></nav>
+
+<section class="section">
+<div class="wrap">
+  <p class="notice-demo">예시 화면입니다. 이 브라우저에서 낸 신청만 보입니다.</p>
+  <form class="form measure" id="check-form" novalidate>
+    <div class="field"><label for="c-phone">휴대전화</label><input type="tel" id="c-phone" inputmode="numeric" placeholder="01012345678"></div>
+    <div class="field"><label for="c-pin">확인 번호 4자리</label><input type="password" id="c-pin" inputmode="numeric" maxlength="4"></div>
+    <button class="btn" type="submit">신청 내역 보기</button>
+  </form>
+  <div id="check-result" style="margin-top:24px" aria-live="polite"></div>
+</div>
+</section>
+
+</main>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/participate.js"></script>
+</body>
+</html>

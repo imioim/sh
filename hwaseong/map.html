@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시설물 지도 | 사단법인 화성연구회</title>
+<meta name="description" content="수원화성 현존 시설물 41곳을 성곽 개념도에서 찾아보는 화면.">
+<meta property="og:title" content="시설물 지도 | 사단법인 화성연구회">
+<meta property="og:description" content="수원화성 현존 시설물 41곳을 성곽 개념도에서 찾아보는 화면.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-page="hwaseong/map.html">
+<main id="main">
+<div class="page-head"><div class="wrap">
+<p class="breadcrumb"><a href="../index.html">처음</a> &gt; 수원화성 &gt; 시설물 지도</p>
+<h1>시설물 지도</h1>
+<p>성곽선 위의 점을 누르거나 아래 목록에서 이름을 고르면 시설물 안내가 열립니다.</p>
+</div></div>
+<nav class="subnav" data-section="hwaseong"></nav>
+
+<section class="section">
+<div class="wrap">
+  <div class="map-layout">
+    <div>
+      <div class="field" style="max-width:320px">
+        <label for="type-filter">유형별로 보기</label>
+        <select id="type-filter"><option value="">전체 41곳</option></select>
+      </div>
+      <div class="fortress" id="full-map"></div>
+      <p class="fortress-note">개념도입니다. 축척과 위치는 실제와 다릅니다. 노란 점은 성문, 노란 테두리는 보물입니다.</p>
+    </div>
+    <div class="map-panel">
+      <div class="fac-card" id="fac-card" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</section>
+<section class="section">
+<div class="wrap">
+  <h2>시설물 목록</h2>
+  <p class="small muted">수원시 공식 소개 순서입니다. 팔달문에서 출발해 동쪽, 북쪽, 서쪽 순으로 성곽을 한 바퀴 돕니다.</p>
+  <ul class="fac-list" id="fac-list"></ul>
+  <p class="note">축성 당시 시설은 48곳이었고, 수해와 전란으로 일부가 사라졌습니다. 집계 방식에 따라 48, 49, 52곳으로 다르게 적은 자료도 있습니다.</p>
+</div>
+</section>
+
+</main>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/fortress.js"></script>
+<script>
+
+(function () {
+  var card = document.getElementById("fac-card");
+  var list = document.getElementById("fac-list");
+  var sel = document.getElementById("type-filter");
+  var cur = 1;
+  var map = HS.Fortress(document.getElementById("full-map"), { mode: "full", onSelect: function (f) { show(f.n, true); } });
+
+  Object.keys(HS.facilityTypes).forEach(function (k) {
+    var c = HS.facilities.filter(function (f) { return f.type === k; }).length;
+    sel.insertAdjacentHTML("beforeend", '<option value="' + k + '">' + HS.facilityTypes[k] + ' ' + c + '곳</option>');
+  });
+  sel.addEventListener("change", function () {
+    map.filter(sel.value);
+    list.querySelectorAll("li").forEach(function (li) { li.classList.toggle("is-dim", !!sel.value && li.getAttribute("data-type") !== sel.value); });
+  });
+
+  list.innerHTML = HS.facilities.map(function (f) {
+    return '<li data-type="' + f.type + '"><span class="num">' + f.n + '</span><button type="button" data-n="' + f.n + '">' + f.name + '</button></li>';
+  }).join("");
+  list.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-n]");
+    if (b) { show(+b.getAttribute("data-n"), true); document.getElementById("full-map").scrollIntoView({ block: "start" }); }
+  });
+
+  function show(n, focus) {
+    var f = HS.facilities.filter(function (x) { return x.n === n; })[0];
+    if (!f) return;
+    cur = n;
+    map.setActive(n);
+    history.replaceState(null, "", "?n=" + n);
+    card.innerHTML = '<figure id="fac-photo" data-nocap></figure><div class="body">' +
+      '<p class="meta"><span class="tag">' + HS.facilityTypes[f.type] + '</span>' + (f.treasure ? '<span class="tag tag-y">' + f.treasure + '</span>' : '') +
+      '<span class="small muted">' + f.n + ' / 41</span></p>' +
+      '<h2 tabindex="-1">' + f.name + '<span class="hanja">' + f.hj + '</span></h2><p>' + f.desc + '</p>' +
+      (f.img ? '<p class="small muted">사진: ' + HS.images[f.img].author + ', <a href="' + HS.imgPage(f.img) + '" target="_blank" rel="noopener">' + HS.images[f.img].license + '</a></p>' : '') +
+      '<div class="fac-nav"><button class="btn btn-line" type="button" data-go="-1">이전 시설</button><button class="btn btn-line" type="button" data-go="1">다음 시설</button></div></div>';
+    var fig = document.getElementById("fac-photo");
+    if (f.img) { HS.renderPhoto(fig, f.img, 900); fig.querySelector(".photo").style.aspectRatio = "16/10"; fig.querySelector(".photo").style.borderRadius = "0"; }
+    else fig.innerHTML = '<div class="photo" style="aspect-ratio:16/10;border-radius:0"><div class="photo-fallback">' + HS.facilityTypes[f.type] + ' 사진 준비 중</div></div>';
+    card.querySelectorAll("[data-go]").forEach(function (b) {
+      b.addEventListener("click", function () { show(((cur - 1 + +b.getAttribute("data-go")) + 41) % 41 + 1, true); });
+    });
+    if (focus) card.querySelector("h2").focus({ preventScroll: true });
+  }
+  var q = parseInt(new URLSearchParams(location.search).get("n"), 10);
+  show(q >= 1 && q <= 41 ? q : 1, false);
+})();
+
+</script>
+</body>
+</html>
