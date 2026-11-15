@@ -40,8 +40,22 @@ HS.images = {
     file: "Hwaseong Fortress 01.jpg",
     title: "수원화성 성벽",
     author: "Bernard Gagnon",
-    license: "퍼블릭 도메인 기증",
+    license: "CC0 1.0",
     licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  hwahongmun: {
+    file: "Hwahongmun 02.jpg",
+    title: "화홍문(북수문)",
+    author: "Bernard Gagnon",
+    license: "CC0 1.0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  suwoncheon: {
+    file: "Suwoncheon passing beneath Hwahongmun - 2008-11-02.JPG",
+    title: "화홍문 아래를 지나는 수원천",
+    author: "Jpbarrass",
+    license: "퍼블릭 도메인",
+    licenseUrl: "https://commons.wikimedia.org/wiki/Help:Public_domain"
   },
   jeondo: {
     file: "Hwaseong Jeondo.jpg",
@@ -129,7 +143,7 @@ HS.facilities = [
     desc: "벽돌로 쌓은 암문입니다." },
   { n: 18, name: "방화수류정(동북각루)", hj: "訪花隨柳亭", type: "gangnu", t: 0.400, treasure: "보물", img: "banghwa",
     desc: "공식 명칭은 동북각루입니다. ‘꽃을 찾고 버들을 따라 노닌다’는 뜻의 이름이 붙었습니다. 홍수로 낡은 것을 1848년에 다시 지었고, 2011년 보물로 지정되었습니다. 평면과 지붕 형태가 독특해 보는 위치마다 모습이 다릅니다." },
-  { n: 19, name: "화홍문(북수문)", hj: "華虹門", type: "sumun", t: 0.420, img: null,
+  { n: 19, name: "화홍문(북수문)", hj: "華虹門", type: "sumun", t: 0.420, img: "hwahongmun",
     desc: "수원천이 화성 안으로 들어오는 북쪽 수문입니다. 수원천이 일곱 개의 홍예를 지나 흐릅니다." },
   { n: 20, name: "북동포루", hj: "北東砲樓", type: "poru2", t: 0.440, img: null,
     desc: "벽돌로 쌓은 화포 발사 시설입니다." },
