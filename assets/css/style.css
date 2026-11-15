@@ -473,3 +473,7 @@ figcaption a { color: var(--ink-3); }
 @media (max-width: 760px) { .feature { grid-template-columns: 1fr; } .feature.rev .photo-wrap { order: 0; } .feature .photo { min-height: 200px; } }
 .feature figcaption { padding: 6px 10px; }
 .section + .section-alt { padding-top: 56px; }
+
+/* 메인 명소 사진: 한 장을 가운데 배치 */
+.spots { grid-template-columns: minmax(0, 520px); justify-content: center; }
+@media (max-width: 900px) { .spots { grid-template-columns: minmax(0, 520px); } }
