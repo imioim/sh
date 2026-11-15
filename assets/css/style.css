@@ -474,6 +474,8 @@ figcaption a { color: var(--ink-3); }
 .feature figcaption { padding: 6px 10px; }
 .section + .section-alt { padding-top: 56px; }
 
-/* 메인 명소 사진: 한 장을 가운데 배치 */
-.spots { grid-template-columns: minmax(0, 520px); justify-content: center; }
-@media (max-width: 900px) { .spots { grid-template-columns: minmax(0, 520px); } }
+/* 메인 명소 사진: 한 장을 홈페이지 본문 폭에 맞춰 가운데 배치(원본 비율 3:2) */
+.spots { grid-template-columns: 1fr; justify-content: center; }
+.spots .spot { aspect-ratio: 3 / 2; }
+.spots .spot strong { font-size: clamp(1.4rem, 2.6vw, 2rem); }
+@media (max-width: 900px) { .spots { grid-template-columns: 1fr; } }

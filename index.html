@@ -170,7 +170,7 @@
   ];
   document.getElementById("spots").innerHTML = spots.map(function (s) {
     var im = HS.images[s.key];
-    return '<a class="spot" href="hwaseong/map.html?n=' + s.n + '"><img loading="lazy" alt="' + im.title + '" src="' + HS.imgUrl(s.key, 800) + '" onerror="this.outerHTML=\'<div class=photo-fallback>사진을 불러오지 못했습니다</div>\'">' +
+    return '<a class="spot" href="hwaseong/map.html?n=' + s.n + '"><img loading="lazy" alt="' + im.title + '" src="' + HS.imgUrl(s.key, 1920) + '" onerror="this.outerHTML=\'<div class=photo-fallback>사진을 불러오지 못했습니다</div>\'">' +
       '<span class="cr">' + im.author + ', ' + im.license + '</span><span class="txt"><strong>' + s.name + '</strong><span>' + s.sub + '</span></span></a>';
   }).join("");
 
